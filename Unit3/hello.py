@@ -9,6 +9,7 @@ app = Flask(__name__)
 @app.route('/test/<int:id_>/')
 def hello(id_):
 	print type(id_)
+
 	return 'Hello, World!'
 
 
