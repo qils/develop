@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 class ListConverter(BaseConverter):
     def __init__(self, url_map, seprators=u'+'):
-        super(ListConverter).__init__(self, url_map)
+        super(ListConverter, self).__init__(url_map)
         self.seprators = urllib.unquote(seprators)
 
     def to_python(self, value):
