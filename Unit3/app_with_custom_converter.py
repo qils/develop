@@ -24,12 +24,12 @@ app.url_map.converters['list'] = ListConverter
 
 
 @app.route('/list/<list:args>/')
-def list1():
+def list1(args):
     return '{} {}'.format(args[0], args[1])
 
 
 @app.route('/list/<list(seprators=u''):args>')
-def list2():
+def list2(args):
     return '{} {}'.format(args[0], args[1])
 
 
