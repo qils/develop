@@ -29,7 +29,7 @@ def list1(args):
     return '{} {}'.format(args[0], args[1]), 200, [{'Test': 'Flask'}]
 
 
-@app.route('/list/<list(seprators=u''):args>')
+@app.route('/list/<list(seprators=u'-'):args>')
 def list2(args):
     return '{} {}'.format(args[0], args[1])
 
