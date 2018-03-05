@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 
 class ListConverter(BaseConverter):
-    def __init__(self, url_map, seprator=u'+'):
+    def __init__(self, url_map, seprator='+'):
         super(ListConverter, self).__init__(url_map)
         self.seprator = urllib.unquote(seprator)
 
@@ -26,7 +26,7 @@ app.url_map.converters['list'] = ListConverter
 
 @app.route('/list/<list:args>/')
 def list1(args):
-    return '{} {}'.format(args[0], args[1]), 200, [{'Test:': 'Flask'}]
+    return '{} {}'.format(args[0], args[1]), 200, [('Test', 'Flask')]
 
 
 @app.route('/list/<list(seprator=u"&"):args>/')
