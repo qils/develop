@@ -20,12 +20,13 @@ class ListConverter(BaseConverter):
     def to_url(self, values):
         return self.seprators.join(BaseConverter.to_url(self, value) for value in values)
 
+
 app.url_map.converters['list'] = ListConverter
 
 
 @app.route('/list/<list:args>/')
 def list1(args):
-    return '{} {}'.format(args[0], args[1])
+    return '{} {}'.format(args[0], args[1]), 200, [{'Test': 'Flask'}]
 
 
 @app.route('/list/<list(seprators=u''):args>')
