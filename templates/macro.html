@@ -1,0 +1,7 @@
+{% macro hello(alist) %}
+    <ul>
+        {% for eachone in alist %}
+            <li>{{ eachone }}</li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
