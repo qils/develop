@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% from macro.html import hello %}
+{% import "macro.html" as macros %}
 
 {% block content %}
-    {{ hello(alist) }}
+    {{ macros.hello(alist) }}
 {% endblock content %}
