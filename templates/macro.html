@@ -5,3 +5,7 @@
         {% endfor %}
     </ul>
 {% endmacro %}
+
+{% macro strftime(time, fmt="%Y-%m-%d %H:%M:%S") %}
+    <p>{{ time.strftime(fmt) }}</p>
+{% endmacro %}

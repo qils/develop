@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --*-- coding: utf-8 --*--
 
-
+from datetime import datetime
 from flask import Flask, render_template
 
 
@@ -10,7 +10,7 @@ app = Flask(__name__, template_folder='../templates/', static_folder='../static/
 
 @app.route('/hello/')
 def hello():
-    return render_template('index.html', alist=[1, 2, 3])
+    return render_template('index.html', alist=[1, 2, 3], time=datetime.now())
 
 
 if __name__ == '__main__':
