@@ -17,8 +17,6 @@ try:
     print ret
 except MySQLdb.Error as e:
     print e.args
-finally:
-    con.close()
 
 
 if __name__ == '__main__':
