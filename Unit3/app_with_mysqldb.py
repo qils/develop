@@ -18,8 +18,7 @@ try:
 except MySQLdb.Error as e:
     print e.args
 finally:
-    if con:
-        con.close()
+    con.close()
 
 
 if __name__ == '__main__':
