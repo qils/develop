@@ -38,7 +38,7 @@ def add_user():
     db.session.add(user)
     db.session.commit()
 
-    return {'add name': user.name}
+    return {'add name': user.name, 'id': user.id}
 
 
 if __name__ == '__main__':
