@@ -11,8 +11,8 @@ meta = MetaData(eng)
 
 users = Table(
     'users', meta,
-    'id', Column(Integer, primary_key=True, autoincrement=True),
-    'Name', Column(String(50), nullable=False)
+    Column('id', Integer, primary_key=True, autoincrement=True),
+    Column('Name', String(50), nullable=False)
 )
 
 
