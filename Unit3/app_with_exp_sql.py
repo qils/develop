@@ -21,7 +21,7 @@ if users.exists():
 users.create()
 
 
-def excute(s):
+def execute(s):
     print '-' * 50
     rs = con.execute(s)
 
