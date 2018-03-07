@@ -30,7 +30,7 @@ def execute(s):
 
 
 with eng.connect() as con:
-    for username in ['mm1', 'mm2', 'mm3']:
+    for username in ['maomao1', 'maomao2', 'maomao3']:
         user = users.insert().values(Name=username)
         print str(user)
         con.execute(user)
