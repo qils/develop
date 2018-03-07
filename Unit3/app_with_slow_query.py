@@ -13,6 +13,7 @@ from flask_sqlalchemy import get_debug_queries
 
 app = Flask(__name__, template_folder='../templates/', static_folder='../static/')
 app.config.from_object(config)
+print app.config['LOG_LEVEL']
 app.logger.handlers(log_module(app.config['LOG_LEVEL']))
 db.init_app(app)
 
