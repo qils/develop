@@ -10,7 +10,7 @@ app.config.from_object('config')
 
 
 try:
-    con = MySQLdb.connect(username=app.config['USERNAME'], password=app.config['PASSWORD'], host=app.config['HOST'], port=app.config['PORT'], db=app.config['DATABASE'])
+    con = MySQLdb.connect(username=app.config['USERNAME'], password=app.config['PASSWORD'], host=app.config['HOSTNAME'], port=app.config['PORT'], db=app.config['DATABASE'])
     cur = con.cursor()
     cur.execute('select version()')
     ret = cur.fetchone()
