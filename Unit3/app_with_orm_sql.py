@@ -27,6 +27,7 @@ session = Session()
 
 
 session.add_all([User(name=username) for username in ('mm1', 'mm2', 'mm3')])
+session.commit()
 
 
 def get_result(rs):

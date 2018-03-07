@@ -4,10 +4,17 @@
 import os
 
 
-# --------SQL Config --------#
+# -------- Base Config --------#
+DEBUG = True
+
+# -------- SQL Config --------#
 HOSTNAME = '127.0.0.1'
 DATABASE = 'r'
 USERNAME = 'web'
 PASSWORD = os.getenv('PASSWORD')
 PORT = os.getenv('PORT')
 DB_URI = 'mysql://{}:{}@{}:{}/{}'.format(USERNAME, PASSWORD, HOSTNAME, PORT, DATABASE)
+
+# -------- SQLALCHEMY Config --------#
+SQLALCHEMY_DATABASE_URI = DB_URI
+SQLALCHEMY_TRACK_MODIFICATIONS = False
