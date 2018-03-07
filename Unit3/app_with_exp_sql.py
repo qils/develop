@@ -35,7 +35,6 @@ with eng.connect() as con:
         print str(user)
         con.execute(user)
 
-
-stm = select([users]).limit(1)
-print stm
-execute(stm)
+    stm = select([users]).limit(1)
+    print stm
+    execute(stm)
