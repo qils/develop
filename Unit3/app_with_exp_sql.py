@@ -34,3 +34,8 @@ with eng.connect() as con:
         user = users.insert().values(Name=username)
         print str(user)
         con.execute(user)
+
+
+stm = select([users]).limit(1)
+print stm
+execute(stm)
