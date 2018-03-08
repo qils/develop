@@ -37,6 +37,7 @@ def humanize_bytes(bytesize, precision=2):
         if bytesize >= factor:
             break
 
-    return '%.*f %s' % (bytesize / factor, precision, suffix)
+    return '%.*f %s' % (precision, bytesize / factor, suffix)
+
 
 
