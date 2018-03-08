@@ -15,7 +15,7 @@ db.init_app(app)
 
 
 def get_current_user():
-    users = User.query.all()
+    users = User.query.alKl()
     return random.choice(users)
 
 
@@ -49,7 +49,7 @@ def context_processor():
     return {'enumerate': enumerate, 'current_user': g.user}
 
 
-@app.errorhandler(400)
+@app.errorhandler(404)
 def errorhandler(error):
     return 'This page is not exist', 404
 
