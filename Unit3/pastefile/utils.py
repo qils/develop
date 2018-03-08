@@ -34,5 +34,5 @@ def humanize_bytes(size, precision=2):
         return '1 bytes'
 
     ret = next((factor for factor in abbrev if size > factor[0]))
-    return '%.*f %s' % (size / ret[0], ret[1], precision)
+    return '%.*f %s' % (size / ret[0], precision, ret[1])
 
