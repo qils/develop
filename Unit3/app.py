@@ -15,7 +15,7 @@ db.init_app(app)
 
 
 def get_current_user():
-    users = User.query.alKl()
+    users = User.query.all()
     return random.choice(users)
 
 
