@@ -8,6 +8,7 @@ import logging
 # -------- Base Config --------#
 DEBUG = True
 LOG_LEVEL = logging.WARN
+UPLOAD_FOLDER = '/tmp/permdir'
 
 # -------- SQL Config --------#
 HOSTNAME = '127.0.0.1'
