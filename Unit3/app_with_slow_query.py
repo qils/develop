@@ -45,5 +45,16 @@ def add_user():
     return {'name': user.name, 'id': user.id}
 
 
+@app.after_request
+def after_request(response):
+    for query in get_debug_queries():
+        if query.duration >= app.config['SQLALCHEMY_QUERY_TIMEOUT']:
+            app.logger.warn('\nContext: {}\nSlow Query: {}\nParameters: {}\nDuration: {}\n'.format(
+                query.context, query.statement, query.parameters, query.duration
+            ))
+
+    return response
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8888)
