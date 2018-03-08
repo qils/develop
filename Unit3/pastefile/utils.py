@@ -20,7 +20,7 @@ def get_file_md5(f, chunksize=8092):
     return h.hexdigest()
 
 
-def humanize_bytes(size, precision=2):
+def humanize_bytes(bytesize, precision=2):
     abbrev = (
         (1 << 50, 'PB'),
         (1 << 40, 'EB'),
@@ -30,9 +30,13 @@ def humanize_bytes(size, precision=2):
         (1, 'bytes')
     )
 
-    if size == 1:
+    if bytesize == 1:
         return '1 bytes'
 
-    ret = next((factor for factor in abbrev if size > factor[0]))
-    return '%.*f %s' % (size / ret[0], precision, ret[1])
+    for factor, suffix in abbrev:
+        if bytesize >= factor:
+            break
+
+    return '%.*f %s' % (bytesize / factor, precision, suffix)
+
 
