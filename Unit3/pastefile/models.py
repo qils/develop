@@ -43,7 +43,7 @@ class PasteFile(db.Model):
 
     @classmethod
     def create_by_upload_file(cls, upload_file):
-        rst = cls(upload_file.filename, upload_file.mimetye, 0)
+        rst = cls(upload_file.filename, upload_file.mimetype, 0)
         upload_file.save(rst.path)      # 按uuid格式将文件保存在/tmp/permdir目录下
 
         with open(rst.path, 'rb') as f:
