@@ -5,7 +5,7 @@ import config
 from datetime import datetime
 from log_module import log_module
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask import template_rendered
 from flask import request_started, request_finished, got_request_exception
 from flask import request_tearing_down, appcontext_tearing_down
