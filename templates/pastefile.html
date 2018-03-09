@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>文件分享工具</title>
-    <link rel="stylesheet" href="/static/stylesheets/index.css">
-    <script src="/static/javascripts/vendors.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/index.css') }}">
+    <script src="{{ url_for('static', filename='javascripts/vendors.js') }}"></script>
 </head>
 <body>
     <div id="main"></div>
-    <script src="/static/javascripts/index.js"></script>
+    <script src="{{ url_for('static', filename='javascripts/index.js') }}"></script>
 </body>
 </html>
