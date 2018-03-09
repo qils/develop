@@ -2,6 +2,7 @@
 # --*-- coding: utf-8 --
 
 import config
+from datetime import datetime
 from log_module import log_module
 
 from flask import Flask, render_template
@@ -24,7 +25,8 @@ template_rendered.connect(log_template_render, app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', time=datetime.now(), alist=['a', 'b', 'c'])
+
 
 
 if __name__ == '__main__':
