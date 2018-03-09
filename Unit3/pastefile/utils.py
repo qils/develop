@@ -3,6 +3,8 @@
 
 import os
 import hashlib
+from config import UPLOAD_FOLDER
+from functools import partial
 
 current_dir = os.path.abspath(os.path.dirname(__file__))
 
@@ -39,5 +41,5 @@ def humanize_bytes(bytesize, precision=2):
 
     return '%.*f %s' % (precision, bytesize / factor, suffix)
 
-
+get_file_path = partial(os.path.join, current_dir, UPLOAD_FOLDER)
 
