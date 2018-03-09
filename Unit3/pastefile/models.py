@@ -9,6 +9,8 @@ from ext import db
 
 
 class PasteFile(db.Model):
+    __tablename__ = 'pastefile'
+
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     filename = db.Column(db.String(128), nullable=False)
     filehash = db.Column(db.String(128), nullable=False, unique=True)

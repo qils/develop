@@ -16,6 +16,12 @@ app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {'/i/': get_file_path()})
 db.init_app(app)
 
 
+@app.before_first_request
+def before_first_request():
+    db.drop_all()
+    db.create_all()
+
+
 @app.after_request
 def after_reqeust(response):
     response.headers['Access-Control-Allow-Origin'] = '*'
