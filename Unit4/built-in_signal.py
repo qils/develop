@@ -24,7 +24,7 @@ template_rendered.connect(log_template_render, app)
 
 
 def log_request_start(sender, **extra):
-    sender.logger.warn('request context start, remote address: {}'.format(request.headers.get('REMOTE_ADDR')))
+    sender.logger.warn('request context start, remote address: {}'.format(request.remote_addr))
 
 
 request_started.connect(log_request_start, app)
