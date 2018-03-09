@@ -59,7 +59,7 @@ class PasteFile(db.Model):
             rst.filemd5 = filemd5
 
             db.session.add(rst)
-            db.sesion.commit(rst)
+            db.session.commit(rst)
             return rst
 
 
