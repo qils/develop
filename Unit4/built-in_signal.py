@@ -16,18 +16,18 @@ app.config.from_object(config)
 app.logger.addHandler(log_module(app.config['LOG_LEVEL']))
 
 
-def log_template_render(sender, template, context, **extras):
+def log_template_render(sender, template, context, **extra):
     sender.logger.warn('template name: {}, content: {}'.format(template.name, context))
 
 
 template_rendered.connect(log_template_render, app)
 
 
-def log_request_start(sender, request):
-    sender.logger.warn('request context startL, remote address: {}'.format(request.headers.get('REMOTE_ADDR')))
+def log_request_start(sender, request, **extra):
+    sender.logger.warn('request context start, remote address: {}'.format(request.headers.get('REMOTE_ADDR')))
 
 
-request_started.connect(log_request_start, app, request)
+request_started.connect(log_request_start, app)
 
 
 @app.route('/')
