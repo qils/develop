@@ -23,10 +23,16 @@ def log_template_render(sender, template, context, **extras):
 template_rendered.connect(log_template_render, app)
 
 
+def log_request_start(sender, request):
+    sender.logger.warn('request context startL, remote address: {}'.format(request.headers.get('REMOTE_ADDR')))
+
+
+request_started.connect(log_request_start, app)
+
+
 @app.route('/')
 def index():
     return render_template('index.html', time=datetime.now(), alist=['a', 'b', 'c'])
-
 
 
 if __name__ == '__main__':
