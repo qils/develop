@@ -23,7 +23,7 @@ def log_template_render(sender, template, context, **extra):
 template_rendered.connect(log_template_render, app)
 
 
-def log_request_start(sender, request, **extra):
+def log_request_start(sender, **extra):
     sender.logger.warn('request context start, remote address: {}'.format(request.headers.get('REMOTE_ADDR')))
 
 
