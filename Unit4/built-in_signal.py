@@ -27,7 +27,7 @@ def log_request_start(sender, request):
     sender.logger.warn('request context startL, remote address: {}'.format(request.headers.get('REMOTE_ADDR')))
 
 
-request_started.connect(log_request_start, app)
+request_started.connect(log_request_start, app, request)
 
 
 @app.route('/')
