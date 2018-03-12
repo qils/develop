@@ -3,12 +3,14 @@
 
 import os
 import logging
+import uuid
 
 
 # -------- Base Config --------#
 DEBUG = True
 LOG_LEVEL = logging.WARN
 UPLOAD_FOLDER = '/tmp/permdir'
+SECRET_KEY = uuid.uuid4().hex
 
 # -------- SQL Config --------#
 HOSTNAME = '127.0.0.1'
