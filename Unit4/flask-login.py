@@ -25,6 +25,9 @@ class JSONResponse(Response):
         return super(JSONResponse, cls).force_type(response, environ)
 
 
+app.response_class = JSONResponse
+
+
 @app.before_first_request
 def before_first_request():
     db.drop_all()
