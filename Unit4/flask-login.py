@@ -16,16 +16,16 @@ db.init_app(app)
 manager.init_app(app)
 
 
-class JSONResponse(Response):
-    @classmethod
-    def force_type(cls, response, environ=None):
-        if isinstance(response, dict):
-            response = jsonify(response)
-
-        return super(JSONResponse, cls).force_type(response, environ)
-
-
-app.response_class = JSONResponse
+#    class JSONResponse(Response):
+#        @classmethod
+#        def force_type(cls, response, environ=None):
+#            if isinstance(response, dict):
+#                response = jsonify(response)
+#
+#            return super(JSONResponse, cls).force_type(response, environ)
+#
+#
+#    app.response_class = JSONResponse
 
 
 @app.before_first_request
@@ -67,7 +67,7 @@ def login():
 @login_required
 def protected():
     user = current_user
-    return {'login_count': user.login_count, 'last_login_ip': user.last_login_ip}
+    return jsonify({'login_count': user.login_count, 'last_login_ip': user.last_login_ip})
 
 
 if __name__ == '__main__':
