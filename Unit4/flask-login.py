@@ -66,3 +66,6 @@ def protected():
     user = current_user
     return {'login_count': user.login_count, 'last_login_ip': user.last_login_ip}
 
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8888)
