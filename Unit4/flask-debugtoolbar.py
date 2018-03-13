@@ -3,14 +3,15 @@
 
 import config
 from flask import Flask
-from ext import db, debugtoolbar
+from ext import db
 
+from flask_debugtoolbar import DebugToolbarExtension
 from flask_script import Manager, Server, Shell
 
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config.from_object(config)
-debugtoolbar.init_app(app)
+debugtoolbar = DebugToolbarExtension(app)
 manager = Manager(app)
 
 
