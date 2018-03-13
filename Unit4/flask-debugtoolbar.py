@@ -3,12 +3,13 @@
 
 import config
 from flask import Flask
-from ext import db, debug_tool_bar
+from ext import db, debugtoolbar
 
 from flask_script import Manager, Server, Shell
+
+
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config.from_object(config)
-debug_tool_bar.init_app(app)
 manager = Manager(app)
 
 
@@ -25,4 +26,3 @@ def hello():
 
 if __name__ == '__main__':
     manager.run()
-

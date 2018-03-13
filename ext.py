@@ -8,4 +8,6 @@ from flask_debugtoolbar import DebugToolbarExtension
 
 db = SQLAlchemy()
 manager = LoginManager()
-debug_tool_bar = DebugToolbarExtension()
+debugtoolbar = DebugToolbarExtension()
+
+
