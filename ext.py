@@ -3,7 +3,9 @@
 
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_debugtoolbar import DebugToolbarExtension
 
 
 db = SQLAlchemy()
 manager = LoginManager()
+debug_tool_bar = DebugToolbarExtension()
