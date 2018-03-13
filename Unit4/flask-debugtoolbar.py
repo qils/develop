@@ -10,6 +10,7 @@ from flask_script import Manager, Server, Shell
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config.from_object(config)
+debugtoolbar.init_app(app)
 manager = Manager(app)
 
 
