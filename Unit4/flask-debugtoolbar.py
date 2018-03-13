@@ -24,8 +24,8 @@ def make_context_shell():
     return dict(db=db)
 
 
-@manager.add_command('shell', Shell(make_context=make_context_shell))
-@manager.add_command('runserver', Server(host='0.0.0.0', port=8888, use_debugger=True, use_reloader=True))
+manager.add_command('shell', Shell(make_context=make_context_shell))
+manager.add_command('runserver', Server(host='0.0.0.0', port=8888, use_debugger=True, use_reloader=True))
 
 
 if __name__ == '__main__':
