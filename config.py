@@ -25,3 +25,6 @@ SQLALCHEMY_DATABASE_URI = DB_URI
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SQLALCHEMY_RECORD_QUERIES = True
 DATABASE_QUERY_TIMEOUT = 0.0001
+
+# ------- Flask Security Config -------- #
+SECURITY_LOGIN_USER_TEMPLATE = '/root/web_develop/venv/lib/python2.7/site-packages/flask_security/templates/security/login_user.html'
