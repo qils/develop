@@ -68,4 +68,7 @@ def admin():
     return 'Admin'
 
 
+if __name__ == '__main__':
+    manager.run()
+
 
