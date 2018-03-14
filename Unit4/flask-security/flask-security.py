@@ -12,7 +12,8 @@ from flask_security import SQLAlchemyUserDatastore, Security, login_required
 from flask_security.forms import LoginForm
 
 
-app = Flask(__name__, template_folder='/root/web_develop/venv/lib/python2.7/site-packages/flask_security/security/templates',
+app = Flask(__name__,
+            template_folder='/root/web_develop/venv/lib/python2.7/site-packages/flask_security/templates/security',
             static_folder='../../static')
 app.config.from_object(config)
 db.init_app(app)
