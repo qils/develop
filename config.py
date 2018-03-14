@@ -27,4 +27,4 @@ SQLALCHEMY_RECORD_QUERIES = True
 DATABASE_QUERY_TIMEOUT = 0.0001
 
 # ------- Flask Security Config -------- #
-SECURITY_LOGIN_USER_TEMPLATE = '/root/web_develop/venv/lib/python2.7/site-packages/flask_security/templates/security/login_user.html'
+SECURITY_LOGIN_USER_TEMPLATE = 'login_user.html'

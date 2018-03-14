@@ -12,7 +12,9 @@ from flask_security import SQLAlchemyUserDatastore, Security, login_required
 from flask_security.forms import LoginForm
 
 
-app = Flask(__name__, template_folder='../../templates', static_folder='../../static')
+app = Flask(__name__, template_folder=('../../templates',
+            '/root/web_develop/venv/lib/python2.7/site-packages/flask_security/templates'),
+            static_folder='../../static')
 app.config.from_object(config)
 db.init_app(app)
 manager = Manager(app)
