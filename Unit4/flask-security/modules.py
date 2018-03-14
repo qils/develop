@@ -46,7 +46,7 @@ class User(UserMixin, db.Model):
         if self.roles is None:
             return False
 
-        all_perms = reduce(or_, map(lambda p: p.permissions, self.roles.all()))
+        all_perms = reduce(or_, map(lambda p: p.permissions, self.roles))
         return all_perms & permission == permission
 
     def can_admin(self):
