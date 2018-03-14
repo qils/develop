@@ -28,3 +28,4 @@ DATABASE_QUERY_TIMEOUT = 0.0001
 
 # ------- Flask Security Config -------- #
 SECURITY_LOGIN_USER_TEMPLATE = 'login_user.html'
+SECURITY_PASSWORD_SALT = uuid.uuid4().hex
