@@ -18,5 +18,5 @@ class LoginUser(UserMixin, db.Model):
     login_count = db.Column(db.Integer, nullable=False, default=0)
     last_login_ip = db.Column(db.String(128), nullable=False, default='unknown')
     email = db.Column(db.String(128), nullable=False)
-    password = db.Column(db.String(128), nullable=False)
+
 
