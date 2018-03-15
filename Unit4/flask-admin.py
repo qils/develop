@@ -60,7 +60,7 @@ def logout():
     return redirect(url_for('admin.index'))
 
 admin = Admin(app, name=u'站点管理', template_mode='bootstrap3')
-admin.add_view(ModelView(LoginUser, db.session))
+admin.add_view(ModelView(LoginUser, db.session, category=u'模型管理', name=u'用户模型'))
 
 path = os.path.join(os.path.abspath(os.path.dirname(__file__)), '../static')
 admin.add_view(FileAdmin(path, '/static/', name=u'静态文件管理'))
