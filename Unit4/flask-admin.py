@@ -70,11 +70,22 @@ class NotAuthenticatedMenuLink(MenuLink):
         return not current_user.is_authenticated
 
 
+class MyAdminView(BaseView):
+    @expose('/')
+    def index(self):
+        return self.render('authenticated-admin.html')
+
+    def is_accessible(self):
+        return current_user.is_authenticated
+
+
 admin = Admin(app, name=u'站点管理', template_mode='bootstrap3')
 admin.add_view(ModelView(LoginUser, db.session, category=u'模型管理', name=u'用户模型'))
 
 path = os.path.join(os.path.abspath(os.path.dirname(__file__)), '../static')
 admin.add_view(FileAdmin(path, '/static/', name=u'静态文件管理'))
+
+admin.add_view(MyAdminView(name=u'验证'))
 
 admin.add_link(MenuLink(name=u'首页', url='/'))
 admin.add_link(MenuLink(name='Google', url='http://www.google.com', category=u'其它连接'))
