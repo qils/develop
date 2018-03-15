@@ -65,7 +65,7 @@ admin.add_view(ModelView(LoginUser, db.session))
 path = os.path.join(os.path.abspath(os.path.dirname(__file__)), '../static')
 admin.add_view(FileAdmin(path, '/static/', name=u'静态文件管理'))
 
-admin.add_link(MenuLink(name='首页', url='/'))
+admin.add_link(MenuLink(name=u'首页', url='/'))
 admin.add_link(MenuLink(name='Google', url='http://www.google.com', category=u'其它连接'))
 admin.add_link(MenuLink(name=u'百度', url='http://www.baidu.com', category=u'其它连接'))
 
