@@ -2,8 +2,11 @@
 # --*-- coding: utf-8 --*--
 
 from flask import Flask
+from werkzeug.contrib.profiler import ProfilerMiddleware
+
 
 app = Flask(__name__)
+app.wsgi_app = ProfilerMiddleware(app.wsgi_app, profile_dir='/tmp')
 
 
 @app.route('/test/<int:id_>/')
