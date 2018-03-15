@@ -6,6 +6,7 @@ from flask import Flask, request
 from ext import db
 from models import LoginUser
 
+from flask_migrate import MigrateCommand, Migrate
 from flask_script import Manager, Shell, Server
 from flask_restful import Resource, marshal_with, reqparse, fields, Api
 
@@ -14,6 +15,7 @@ app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config.from_object(config)
 db.init_app(app)
 api = Api(app)
+migrate = Migrate(app, db)
 manager = Manager(app)
 
 
@@ -29,6 +31,7 @@ def make_context_shell():
 
 manager.add_command('shell', Shell(make_context=make_context_shell))
 manager.add_command('runserver', Server(host='0.0.0.0', port=8888, use_reloader=True, use_debugger=True))
+manager.add_command('db', MigrateCommand)
 
 
 parse = reqparse.RequestParser()
