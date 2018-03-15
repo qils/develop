@@ -19,5 +19,6 @@ class LoginUser(UserMixin, db.Model):
     last_login_ip = db.Column(db.String(128), nullable=False, default='unknown')
     email = db.Column(db.String(128), nullable=False)
     password = db.Column(db.String(128))
+    create_time = db.Column(db.DateTime())
 
 
