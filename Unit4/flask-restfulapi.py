@@ -3,17 +3,17 @@
 
 import config
 from flask import Flask, request
-from ext import db, api
+from ext import db
 from models import LoginUser
 
 from flask_script import Manager, Shell, Server
-from flask_restful import Resource, marshal_with, reqparse, fields
+from flask_restful import Resource, marshal_with, reqparse, fields, Api
 
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config.from_object(config)
 db.init_app(app)
-api.init_app(app)
+api = Api(app)
 manager = Manager(app)
 
 
