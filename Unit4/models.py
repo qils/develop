@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # --*-- coding: utf-8 --*--
 
-from ext import db, manager
+from ext import db, login_manager
 from flask_login import UserMixin
 
 
-@manager.user_loader
+@login_manager.user_loader
 def user_loader(id):
     return LoginUser.query.filter_by(id=int(id)).first()
 

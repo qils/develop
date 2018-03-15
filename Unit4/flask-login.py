@@ -4,7 +4,7 @@
 import config
 
 from werkzeug.wrappers import Response
-from ext import db, manager
+from ext import db, login_manager
 from models import LoginUser
 from flask import Flask, request, render_template, url_for, redirect, jsonify
 from flask_login import user_logged_in, login_user, login_required, current_user
@@ -13,7 +13,7 @@ from flask_login import user_logged_in, login_user, login_required, current_user
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config.from_object(config)
 db.init_app(app)
-manager.init_app(app)
+login_manager.init_app(app)
 
 
 #    class JSONResponse(Response):
