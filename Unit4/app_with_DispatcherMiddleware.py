@@ -33,7 +33,7 @@ def json_page():
     return {'ok': 1}
 
 
-app.wsgi_app = DispatcherMiddleware(app.wsgi_app, OrderedDict((('/jJson', json_page), )))
+app.wsgi_app = DispatcherMiddleware(app.wsgi_app, OrderedDict((('/json', json_page), )))
 
 
 if __name__ == '__main__':
