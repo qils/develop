@@ -8,7 +8,7 @@ from werkzeug.wsgi import DispatcherMiddleware
 
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
-json_page = Flask(__name__)
+json_page = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 
 class JSONResponse(Response):
