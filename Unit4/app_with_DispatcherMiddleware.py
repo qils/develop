@@ -29,11 +29,11 @@ def index():
 
 
 @json_page.route('/page/')
-def json_page(*args):
+def json_page():
     return {'ok': 1}
 
 
-app.wsgi_app = DispatcherMiddleware(app.wsgi_app, {'/json': json_page})
+app = DispatcherMiddleware(app, {'/json': json_page})
 
 
 if __name__ == '__main__':
