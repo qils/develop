@@ -22,8 +22,7 @@ def signin():
 
     if len(username) <= 6:
         error = 'username must gt 6'
-
-    if not any(c.isupper() for c in password):
+    elif any(c.isupper() for c in password):
         error = 'password is error'
 
     if error is not None:
