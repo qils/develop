@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <script src="{{ url_for('static', filename='javascripts/jquery.min.js') }}"></script>
+    <link type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <style>
+        #result {
+            margin-top: 20px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class=".container">
+        <form action="/signin/" method="post" role="form">
+            <h2>请登录</h2>
+            <input type="text" name="username" placeholder="用户名" required autofocus>
+            <input type="password" name="password" placeholder="密码" required>
+            <button type="button" class="btn">登录</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        $(function () {
+            $(".btn").click(function () {
+               var result = $("#result");
+               var username = $("input[name=username]").val();
+               var password = $("input[name=password]").val();
+               $.ajax({
+                   url: "/sigin/",
+                   data: $("form").serialize(),
+                   // data: {'username': username, 'password': password}
+                   datatype: "json",
+                   type: "POST"
+               }).done(function (data) {
+                   if (!data.r) {
+                       result.html(data.rs);
+                   }else{
+                       result.html(data.error);
+                   }
+               })
+            })
+        })
+    </script>
+</body>
+</html>
