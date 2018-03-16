@@ -29,7 +29,7 @@ def index():
 
 
 @json_page.route('/page/')
-def json_page():
+def json_page(*args):
     return {'ok': 1}
 
 
