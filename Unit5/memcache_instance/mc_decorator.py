@@ -5,6 +5,12 @@
 def cache(key_pattern, mc, expire, max_retry):
     print key_pattern, mc, expire, max_retry
 
+    def wrapper(func):
+        def _(*args, **kwargs):
+            pass
+        return _
+    return wrapper
+
 
 def create_decorator(mc):
     def cache_(key_pattern, expire=0, mc=mc, max_retry=0):
