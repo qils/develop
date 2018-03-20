@@ -17,6 +17,7 @@ def login():
 @app.route('/signin/', methods=['POST'])
 def signin():
     error = None
+    remote_addr = request.remote_addr
     username = request.form.get('username')
     password = request.form.get('password')
 
@@ -28,7 +29,7 @@ def signin():
     if error is not None:
         return jsonify({'r': 1, 'error': error})
     else:
-        return jsonify({'r': 0, 'rs': 'OK'})
+        return jsonify({'r': 0, 'rs': remote_addr})
 
 
 if __name__ == '__main__':
