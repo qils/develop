@@ -30,8 +30,9 @@ class User(object):
 
     @classmethod
     def add(cls, name, email):
-        sql = 'insert into login_users(name, email) values(%s, %s)'
-        id_ = con.execute(sql % (name, email)).lastrowid
+        sql = ('insert into login_users(name, email) ' 
+               'values(%s, %s)')
+        id_ = con.execute(sql, (name, email)).lastrowid
         # cls.clear_mc(id_)
         return cls.get(id_)
 
