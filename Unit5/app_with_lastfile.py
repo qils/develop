@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # --*-- coding: utf-8 --*--
 
+import msgpack
 import json
 import config
 import redis
@@ -17,6 +18,16 @@ conn = redis.StrictRedis(host='127.0.0.1', port=6379)
 max_count = 50
 
 
+def default(obj):
+    if isinstance(obj, PasteFile):
+        return msgpack.ExtType(42, obj.to_dict())
+
+
+def ext_hook(code, data):
+    if code == 42:
+        return PasteFile.from_dict(data)
+
+
 @app.before_first_request
 def before_first_request():
     db.drop_all()
@@ -30,9 +41,9 @@ def pastedfile():
     db.session.add(uploaded_file)
     db.session.commit()
 
-    conn.lpush('last_files', uploaded_file.id)
-    conn.ltrim('last_files', 0, max_count - 1)
-
+    packed = msgpack.packb(uploaded_file, default=default)
+    conn.lpush('last_files_msg', packed)
+    conn.ltrim('last_files_msg', 0, max_count - 1)
     return jsonify({'ok': 0}), 201
 
 
@@ -40,10 +51,10 @@ def pastedfile():
 def get_last_files():
     start = request.args.get('start', default=0, type=int)
     limit = request.args.get('limit', default=20, type=int)
-    fds = conn.lrange('last_files', start, start + limit - 1)
+    picked_files = conn.lrange('last_files_msg', start, start + limit - 1)
 
-    return json.dumps([{'file_id': file.id, 'file_name': file.name} for file in
-                       PasteFile.query.filter(PasteFile.id.in_(fds)).all()])
+    fds = [msgpack.unpackb(each_file, ext_hook=ext_hook) for each_file in picked_files]
+    return json.dumps([{'file_id': p.id, 'file_name': p.name} for p in fds])
 
 
 if __name__ == '__main__':
