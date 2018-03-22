@@ -43,7 +43,7 @@ class PasteFile(db.Model):
     @classmethod
     def from_dict(cls, data):
         data = ast.literal_eval(data)
-        id = data.pop(id)
+        id = data.pop('id')
         data['uploaded_time'] = datetime.datetime.strptime(data['uploaded_time'], '%Y%m%dT%H%M%S.%f')
         p = cls(**data)
         p.id = id
