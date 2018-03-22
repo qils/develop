@@ -38,6 +38,7 @@ def before_first_request():
 def pastedfile():
     name = request.form.get('name')
     uploaded_file = PasteFile(name)
+    print vars(uploaded_file)
     db.session.add(uploaded_file)
     db.session.commit()
 
