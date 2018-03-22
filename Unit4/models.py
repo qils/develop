@@ -37,6 +37,7 @@ class PasteFile(db.Model):
 
     def to_dict(self):
         adict = {k: v for k, v in vars(self).items() if not k.startswith('_')}
+        print adict
         adict['uploaded_time'] = adict['uploaded_time'].strftime('%Y%m%dT%H%M%S.%f')
         return str(adict)
 
