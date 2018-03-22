@@ -42,7 +42,7 @@ def get_last_files():
     limit = request.args.get('limit', default=20, type=int)
     fds = conn.lrange('last_files', start, start + limit - 1)
 
-    return json.dumps([{file.id, file.name, file.uploaded_time} for file in
+    return json.dumps([{file.id, file.name} for file in
                        PasteFile.query.filter(PasteFile.id.in_(fds)).all()])
 
 
