@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # --*-- coding: utf-8 --*--
 
+import datetime
 from ext import db, login_manager
 from flask_login import UserMixin
 
@@ -22,3 +23,13 @@ class LoginUser(UserMixin, db.Model):
     create_time = db.Column(db.DateTime())
 
 
+class PasteFile(db.Model):
+    __tablename__ = 'paste_file'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(128), nullable=False)
+    uploaded_time = db.Column(db.DateTime, nullable=False)
+
+    def __init__(self, name, uploaded_time=None):
+        self.name = name
+        self.uploaded_time = datetime.datetime.now() if not uploaded_time else uploaded_time
