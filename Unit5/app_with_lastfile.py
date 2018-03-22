@@ -46,3 +46,7 @@ def get_last_files():
                        PasteFile.query.filter(PasteFile.id.in_(fds)).all()])
 
 
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8888)
+
+
