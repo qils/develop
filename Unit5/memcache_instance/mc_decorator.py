@@ -44,17 +44,16 @@ def cache(key_pattern, mc, expire, max_retry):
         gen_key = gen_key_factory(key_pattern, arg_names, defaults)
 
         @wraps(func)
-        def _(*args, **kwargs):
-            key, args = gen_key(*args, **kwargs)
+        def _(*a, **kw):
+            key, args = gen_key(*a, **kw)
 
             if not key:
-                return func(*args, **kwargs)
+                return func(*a, **kw)
 
             r = mc.get(key)
             if not r:
-                print args
-                r = func(*args, **kwargs)
-                print r
+                print a
+                r = func(*a, **kw)
                 mc.set(key, r, expire)
             return r
         _.original_function = func
