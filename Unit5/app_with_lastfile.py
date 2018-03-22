@@ -41,6 +41,7 @@ def pastedfile():
     db.session.add(uploaded_file)
     db.session.commit()
 
+    print uploaded_file
     packed = msgpack.packb(msgpack.ExtType(42, uploaded_file.to_dict()))
     conn.lpush('last_files_msg', packed)
     conn.ltrim('last_files_msg', 0, max_count - 1)
