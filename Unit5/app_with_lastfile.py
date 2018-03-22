@@ -38,13 +38,13 @@ def before_first_request():
 def pastedfile():
     name = request.form.get('name')
     uploaded_file = PasteFile(name)
-    db.session.add(uploaded_file)
-    db.session.commit()
 
-    print vars(uploaded_file)
-    packed = msgpack.packb(msgpack.ExtType(42, uploaded_file.to_dict()))
+    packed = msgpack.packb(uploaded_file, default=default)
     conn.lpush('last_files_msg', packed)
     conn.ltrim('last_files_msg', 0, max_count - 1)
+
+    db.session.add(uploaded_file)
+    db.session.commit()
     return jsonify({'ok': 0}), 201
 
 
