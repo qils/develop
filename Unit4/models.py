@@ -3,7 +3,7 @@
 
 import ast
 import datetime
-from ext import db, login_manIager
+from ext import db, login_manager
 from flask_login import UserMixin
 
 
