@@ -20,6 +20,7 @@ max_count = 50
 
 def default(obj):
     if isinstance(obj, PasteFile):
+        print vars(obj)
         return msgpack.ExtType(42, obj.to_dict())
 
 
@@ -38,7 +39,6 @@ def before_first_request():
 def pastedfile():
     name = request.form.get('name')
     uploaded_file = PasteFile(name)
-    print vars(uploaded_file)
     db.session.add(uploaded_file)
     db.session.commit()
 
