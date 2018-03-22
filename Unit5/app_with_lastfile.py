@@ -20,7 +20,6 @@ max_count = 50
 
 def default(obj):
     if isinstance(obj, PasteFile):
-        print vars(obj)
         return msgpack.ExtType(42, obj.to_dict())
 
 
@@ -42,7 +41,7 @@ def pastedfile():
     db.session.add(uploaded_file)
     db.session.commit()
 
-    packed = msgpack.packb(uploaded_file, default=default)
+    packed = msgpack.packb(msgpack.ExtType(42, uploaded_file.to_dict()))
     conn.lpush('last_files_msg', packed)
     conn.ltrim('last_files_msg', 0, max_count - 1)
     return jsonify({'ok': 0}), 201
