@@ -52,6 +52,7 @@ def cache(key_pattern, mc, expire, max_retry):
 
             r = mc.get(key)
             if not r:
+                print args
                 r = func(*args, **kwargs)
                 print r
                 mc.set(key, r, expire)
