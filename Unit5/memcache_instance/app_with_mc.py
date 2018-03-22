@@ -44,6 +44,7 @@ class User(object):
             return None
 
         row = con.execute('select id, name, email from login_users where id=%s', id_).fetchone()
+        print row
         return cls(*row) if row else None
 
     @classmethod
