@@ -36,7 +36,6 @@ class PasteFile(db.Model):
         self.uploaded_time = datetime.datetime.now() if not uploaded_time else uploaded_time
 
     def to_dict(self):
-        print vars(self)
         adict = {k: v for k, v in vars(self).items() if not k.startswith('_')}
         adict['uploaded_time'] = adict['uploaded_time'].strftime('%Y%m%dT%H%M%S.%f')
         return str(adict)
@@ -44,8 +43,6 @@ class PasteFile(db.Model):
     @classmethod
     def from_dict(cls, data):
         data = ast.literal_eval(data)
-        id = data.pop('id')
         data['uploaded_time'] = datetime.datetime.strptime(data['uploaded_time'], '%Y%m%dT%H%M%S.%f')
         p = cls(**data)
-        p.id = id
         return p

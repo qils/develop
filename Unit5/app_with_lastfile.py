@@ -38,8 +38,6 @@ def before_first_request():
 def pastedfile():
     name = request.form.get('name')
     uploaded_file = PasteFile(name)
-    id_ = uploaded_file.id
-    uploaded_file.id = id_
 
     packed = msgpack.packb(uploaded_file, default=default)
     conn.lpush('last_files_msg', packed)
