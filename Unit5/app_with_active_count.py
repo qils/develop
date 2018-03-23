@@ -45,9 +45,9 @@ account_id = 10001
 print r.getbit('{}:{}:{}'.format(ACCOUNT_KEY, now.year, now.month), account_id)
 
 
-keys = ['{}:{}:{}:{}L'.format(ACCOUNT_KEY, now.year, now.month, day) for day in range(1, 3)]
-r.bitop('or', 'destkey', *keys)
+keys = ['{}:{}:{}:{}'.format(ACCOUNT_KEY, now.year, now.month, day) for day in range(1, 3)]
+r.bitop('or', 'destkey:or', *keys)
 print r.bitcount('destkey:or')
 
-r.bitop('and', 'destkey', *keys)
+r.bitop('and', 'destkey:and', *keys)
 print r.bitcount('destkey:and')
