@@ -26,6 +26,9 @@ def write_log(headers, payload):
 def main():
     while 1:
         headers, payload = childutils.listener.wait(sys.stdin, sys.stdout)
+        print headers
+        print '------------->'
+        print payload
         write_log(headers, payload)
         childutils.listener.ok(sys.stdout)
 
