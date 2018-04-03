@@ -13,6 +13,9 @@ def write_log(headers, payload):
     f = open('/tmp/log.txt', 'a')
     f.write(str(headers) + '\n\n')
     pheaders, pdata = childutils.eventdata(payload + '\n')
+    print pheaders
+    print '#############'
+    print pdata
     pheaders['dt'] = datetime.now()
 
     msg = ('[{dt}]Process {processname} in group {groupname} exited '
@@ -29,6 +32,7 @@ def main():
         print headers
         print '------------->'
         print payload
+        print '------------->'
         write_log(headers, payload)
         childutils.listener.ok(sys.stdout)
 
