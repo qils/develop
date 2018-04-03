@@ -18,7 +18,7 @@ def write_log(headers, payload):
     print pdata
     pheaders['dt'] = datetime.now()
 
-    msg = ('[{dt}]Process {processname} in group {groupname} exited '
+    msg = ('[{dt}] Process {processname} in group {groupname} exited '
            'unexpectedly (pid {pid}) from state {from_state}\n').format(
         **pheaders)
     f.write(msg)
@@ -29,10 +29,6 @@ def write_log(headers, payload):
 def main():
     while 1:
         headers, payload = childutils.listener.wait(sys.stdin, sys.stdout)
-        print headers
-        print '------------->'
-        print payload
-        print '------------->'
         write_log(headers, payload)
         childutils.listener.ok(sys.stdout)
 
