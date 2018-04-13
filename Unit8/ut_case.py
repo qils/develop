@@ -24,7 +24,7 @@ class TestCounter(unittest.TestCase):
         c.update(f=1)
         self.assertEqual(c, Counter(a=3, b=2, c=1, d=1, f=1))
         c.update(a=10)
-        self.assertEqual(c, Counter(a=13, b=2, c=1, d=1, f=1))
+        self.assertEqual(c, Counter(a=3, b=2, c=1, d=1, f=1))
 
     def tearDown(self):
         print 'tearDown starting ....'
