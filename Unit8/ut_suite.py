@@ -3,6 +3,7 @@
 
 import unittest
 from collections import Counter
+from ut_case import TestCounter as TestCounter2
 
 
 class TestCounter(unittest.TestCase):
@@ -33,7 +34,7 @@ class TestDict(unittest.TestCase):
 
 if __name__ == '__main__':
     suite = unittest.TestSuite()
-    suite.addTest(TestDict())
-    suite.addTest(TestCounter())
+    suite.addTest(TestCounter2('test_basics'))
+    suite.addTest(TestCounter2('test_update'))
     runner = unittest.TextTestRunner()
     runner.run(suite)
