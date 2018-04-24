@@ -6,7 +6,7 @@ from collections import Counter
 
 
 class TestCounter(unittest.TestCase):
-    def startup(self):
+    def setUp(self):
         self.c = Counter('abcdefabc')
         print 'Start up ...'
 
