@@ -20,6 +20,6 @@ class TestCounter(unittest.TestCase):
 
 if __name__ == '__main__':
     suite = unittest.TestSuite()
-    suite.addTest(TestCounter)
+    suite.addTest(TestCounter())
     runner = unittest.TextTestRunner()
     runner.run(suite)
