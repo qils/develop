@@ -10,7 +10,7 @@ class TestCounter(unittest.TestCase):
         self.c = Counter('abcdefabc')
         print 'Start up ...'
 
-    def runTestBasics(self):
+    def runTest(self):
         c = self.c
         self.assertEqual(c, Counter(a=2, b=2, c=2, d=1, e=1, f=1))
 
