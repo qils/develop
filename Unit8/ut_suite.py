@@ -33,6 +33,6 @@ class TestDict(unittest.TestCase):
 
 if __name__ == '__main__':
     suite = unittest.TestSuite()
-    suite.addTest(TestCounter(), TestDict())
+    suite.addTest(TestDict())
     runner = unittest.TextTestRunner()
     runner.run(suite)
