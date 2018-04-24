@@ -18,8 +18,21 @@ class TestCounter(unittest.TestCase):
         print 'Test teardown'
 
 
+class TestDict(unittest.TestCase):
+    def setUp(self):
+        self.c = dict(('a', 1), ('b', 2))
+        print 'Start up ...'
+
+    def runTest(self):
+        c = self.c
+        self.assertEqual(c, {'a': 1, 'b': 2})
+
+    def tearDown(self):
+        print 'Test teardown'
+
+
 if __name__ == '__main__':
     suite = unittest.TestSuite()
-    suite.addTest(TestCounter())
+    suite.addTest(TestCounter(), TestDict())
     runner = unittest.TextTestRunner()
     runner.run(suite)
