@@ -20,7 +20,7 @@ class TestCounter(unittest.TestCase):
 
 class TestDict(unittest.TestCase):
     def setUp(self):
-        self.c = dict(('a', 1), ('b', 2))
+        self.c = dict((('a', 1), ('b', 2)))
         print 'Start up ...'
 
     def runTest(self):
@@ -34,5 +34,6 @@ class TestDict(unittest.TestCase):
 if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(TestDict())
+    suite.addTest(TestCounter())
     runner = unittest.TextTestRunner()
     runner.run(suite)
