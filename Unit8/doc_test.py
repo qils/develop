@@ -11,8 +11,11 @@ def import_object(name):
     >>> import_object('os.path') is os.path
     True
     >>> import_object('os.missing_module')
-    Traceback (most recent call last)
-        ...
+    Traceback (most recent call last):
+        File "doc_test.py", line 30, in <module>
+        import_object('os.missing_module')
+        File "doc_test.py", line 25, in import_object
+        raise ImportError('No module name {}'.format(parts[-1]))
     ImportError: No module name missing_module
     '''
 
@@ -26,6 +29,6 @@ def import_object(name):
 
 
 if __name__ == '__main__':
-    # doctest.testmod()
-    import_object('os.missing_module')
+    doctest.testmod()
+    # import_object('os.missing_module')
 
