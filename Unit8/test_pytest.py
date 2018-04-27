@@ -37,3 +37,12 @@ def test_setup_function(setup_function):
     print 'Test func called'
 
 
+@pytest.mark.parametrize('test_input, excepted',[
+    (1 + 2, 3),
+    (2 ** 2, 4)
+])
+def test_eval(test_input, excepted):
+    assert eval(test_input, excepted)
+
+
+
