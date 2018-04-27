@@ -30,5 +30,4 @@ def import_object(name):
 
 if __name__ == '__main__':
     doctest.testmod()
-    # import_object('os.missing_module')
 
