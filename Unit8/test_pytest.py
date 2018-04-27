@@ -23,3 +23,17 @@ class TestClass(object):
     def test_two(self, setup_math):
         assert setup_math.ceil(10) == 10
 
+
+@pytest.fixture(scope='function')
+def setup_function(request):
+    def teardown_function():
+        print 'teardown function is called'
+
+    request.addfinalizer(setup_function)
+    print 'setup_function called'
+
+
+def test_setup_function(setup_function):
+    print 'Test func called'
+
+
