@@ -21,5 +21,5 @@ class TestClass(object):
         assert 'h' in 'hello'
 
     def test_two(self, setup_math):
-        asset setup_math.ceil(10) == 10
+        assert setup_math.ceil(10) == 10
 
