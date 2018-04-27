@@ -13,4 +13,4 @@ def setup_math():
 def test_setup_math(setup_math):
     import time
     time.sleep(4)
-    assert setup_math.pow(2, 4) == 8.0
+    assert setup_math.pow(2, 3) == 8.0
