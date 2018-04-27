@@ -29,7 +29,7 @@ def setup_function(request):
     def teardown_function():
         print 'teardown function is called'
 
-    request.addfinalizer(setup_function)
+    request.addfinalizer(teardown_function)
     print 'setup_function called'
 
 
