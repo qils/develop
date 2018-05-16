@@ -9,7 +9,7 @@ def on_message(channel, method_frame, header_frame, body):
     print body
 
 
-parameters = pika.URLParameters('amqp://maomao@qls1991:5672/web_develop')
+parameters = pika.URLParameters('amqp://maomao:qls1991@localhost:5672/web_develop')
 connect = pika.BlockingConnection(parameters)
 channel = connect.channel()
 
