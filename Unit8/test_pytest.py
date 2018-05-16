@@ -42,7 +42,4 @@ def test_setup_function(setup_function):
     (2 ** 2, 4)
 ])
 def test_eval(test_input, excepted):
-    assert eval(test_input, excepted)
-
-
-
+    assert eval(test_input) == excepted
